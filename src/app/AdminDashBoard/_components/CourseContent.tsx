@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button } from "@/components/ui/moving-border";
+import React from "react";
 
 interface Link {
   title: string;
@@ -10,14 +12,13 @@ interface Content {
   subtitle: string;
   videoUrl: string;
   description: string;
-  videoLength:string,
-  videoPlayer:string,
-  suggestions:string
+
 
   Links: Link[];
 }
 
 interface Section {
+  isOpen: any;
   id: number; // Unique identifier for the section
   title: string;
   description: string;
@@ -43,6 +44,7 @@ const CourseContent: React.FC<Props> = ({
       title: "",
       description: "",
       components: [],
+      isOpen: undefined
     };
     setCourseContentData([...courseContentData, newSection]);
   };
@@ -60,6 +62,7 @@ const CourseContent: React.FC<Props> = ({
       videoUrl: "",
       description: "",
       Links: [{ title: "", url: "" }],
+      
     };
 
     setCourseContentData(
@@ -279,72 +282,8 @@ const CourseContent: React.FC<Props> = ({
                       placeholder="Video URL"
                       className="border rounded p-2 w-full mb-2"
                     />
-                    <input
-                      type="text"
-                      value={content.videoLength}
-                      onChange={(e) =>
-                        setCourseContentData(
-                          courseContentData.map((s) =>
-                            s.id === section.id
-                              ? {
-                                  ...s,
-                                  components: s.components.map((c) =>
-                                    c.id === content.id
-                                      ? { ...c, videoUrl: e.target.value }
-                                      : c
-                                  ),
-                                }
-                              : s
-                          )
-                        )
-                      }
-                      placeholder="Video Length"
-                      className="border rounded p-2 w-full mb-2"
-                    />
-                    <input
-                      type="text"
-                      value={content.videoPlayer}
-                      onChange={(e) =>
-                        setCourseContentData(
-                          courseContentData.map((s) =>
-                            s.id === section.id
-                              ? {
-                                  ...s,
-                                  components: s.components.map((c) =>
-                                    c.id === content.id
-                                      ? { ...c, videoUrl: e.target.value }
-                                      : c
-                                  ),
-                                }
-                              : s
-                          )
-                        )
-                      }
-                      placeholder="Video Player"
-                      className="border rounded p-2 w-full mb-2"
-                    />
-                    <input
-                      type="text"
-                      value={content.suggestions}
-                      onChange={(e) =>
-                        setCourseContentData(
-                          courseContentData.map((s) =>
-                            s.id === section.id
-                              ? {
-                                  ...s,
-                                  components: s.components.map((c) =>
-                                    c.id === content.id
-                                      ? { ...c, videoUrl: e.target.value }
-                                      : c
-                                  ),
-                                }
-                              : s
-                          )
-                        )
-                      }
-                      placeholder="Write Your Suggetion"
-                      className="border rounded p-2 w-full mb-2"
-                    />
+              
+            
                     {content.Links.map((link, index) => (
                       <div key={index} className="flex space-x-2 mb-2">
                         <input
@@ -443,7 +382,14 @@ const CourseContent: React.FC<Props> = ({
       </button>
 
 
-      <button onClick={()=>setActive(active+1)}>next</button>
+      <div className="mt-8 flex justify-between">
+<Button onClick={() => setActive(active - 1)} >
+        Prev
+      </Button>
+      <Button onClick={() => setActive(active + 1)} >
+        Next
+      </Button>
+</div>
     </div>
   );
 };

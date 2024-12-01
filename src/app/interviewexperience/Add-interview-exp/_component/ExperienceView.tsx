@@ -30,7 +30,7 @@ const ExperienceView = ({ active, setActive, round, interviewInfo, handleSubmit 
       {/* Interview Rounds */}
       <div className="mt-6">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Interview Rounds</h2>
-        {round?.map((subtitle, index) => (
+        {round?.map((subtitle:any, index:number) => (
           <div
             key={index}
             className="mb-6 p-4 border border-gray-300 rounded-lg shadow-sm"
@@ -57,10 +57,10 @@ const ExperienceView = ({ active, setActive, round, interviewInfo, handleSubmit 
             {/* Questions */}
             <div className="mt-4">
               <h4 className="text-lg font-semibold text-gray-800">Questions</h4>
-              {subtitle.interviewQuestion.map((subSub, subIndex) => (
+              {subtitle.interviewQuestion.map((subSub:any, subIndex:number) => (
                 <div key={subIndex} className="mt-4">
                   <h5 className="text-lg font-medium text-gray-700">{subSub.title}</h5>
-                  {subSub?.interviewQuestion?.map((body, bodyIndex) => (
+                  {subSub?.interviewQuestion?.map((body:any, bodyIndex:number) => (
                     <div
                       key={bodyIndex}
                       className="mt-2 p-3 bg-gray-50 border rounded-md shadow-sm"

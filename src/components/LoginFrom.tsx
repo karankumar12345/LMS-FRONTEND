@@ -3,11 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+
 import Link from "next/link";
 import { useLoginUserMutation } from "../../redux/features/auth/authapi";
 import toast from "react-hot-toast";

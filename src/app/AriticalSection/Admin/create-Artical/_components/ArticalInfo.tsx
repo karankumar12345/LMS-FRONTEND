@@ -6,6 +6,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Action } from "@reduxjs/toolkit";
+import Image from "next/image";
 import React, { useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 
@@ -165,7 +166,7 @@ const handleDrop = (e: React.DragEvent) => {
                 {articlaInfo.thumbnail && (
     <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Thumbnail Preview:</label>
-        <img
+        <Image
             src={typeof articlaInfo.thumbnail === "string" ? articlaInfo.thumbnail : articlaInfo.thumbnail.url}
             alt="Thumbnail preview"
             className="mt-2 w-full h-64 object-cover border border-gray-300 rounded-md shadow-sm"

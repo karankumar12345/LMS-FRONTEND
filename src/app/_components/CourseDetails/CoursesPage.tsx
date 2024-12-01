@@ -6,31 +6,29 @@ import CoursesPlayer from '@/app/AdminDashBoard/_components/CoursesPlayer'
 import Rating from '@/app/AdminDashBoard/_components/Rating'
 import { Button } from '@/components/ui/moving-border'
 import Link from 'next/link'
-import { format } from 'path'
-import React, { useEffect, useState } from 'react'
+
+import React from 'react'
 import { IoCheckmarkDoneOutline, IoCloseOutline } from 'react-icons/io5'
-import { useSelector } from 'react-redux'
+
 import CourseContentList from './CourseContentList'
-// import { useCreateOrderMutation, useGetStripePublishableKeyQuery } from '../../../../redux/features/orderApi/OrderApi'
-import {loadStripe} from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import CheckForm from './CheckForm'
+
+
 import { useLoadUserQuery } from '../../../../redux/features/apislice'
 import { useParams } from 'next/navigation'
 import { useCreateOrderbyuserMutation } from '../../../../redux/features/courses/coursesapi'
 import { useRouter } from 'next/navigation'
-// import { useCreateOrderMutation } from '../../../../redux/features/courses/coursesapi'
 
 type Props = {
   [x: string]: any
   data: any,
+  
 
 }
 
 const CoursesPage = ({ data }: Props) => {
 const router=useRouter()
   
-  const {id} =useParams()
+  const id =useParams()
 const {data:userData}=useLoadUserQuery(undefined,{})
 const [createOrder] =useCreateOrderbyuserMutation()
 const user=userData?.user

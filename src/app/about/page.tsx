@@ -4,7 +4,7 @@ import React from 'react';
 const page = () => {
   return (
     <div className="container mx-auto p-6">
-           <Heading title='About   ' description={''} keywords={''} />
+           <Heading title='About   ' description="Karan" keywords="kumar" />
       <div className="text-center mb-8">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">About LWS</h1>
         <p className="text-lg text-gray-600">
@@ -17,7 +17,7 @@ const page = () => {
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
           <p className="text-gray-700">
             At LWS, our mission is to help developers master the art of technical interviews. We believe that the right preparation is the key to success. 
-            Whether you're just starting or a seasoned professional, our platform provides everything you need to boost your skills and confidence.
+            Whether youre just starting or a seasoned professional, our platform provides everything you need to boost your skills and confidence.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ const page = () => {
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Join Us Today!</h2>
         <p className="text-lg text-gray-600 mb-6">
-          Start preparing for your next big interview with LWS. Whether you're aiming for your first job or preparing for senior-level positions, we've got you covered.
+          Start preparing for your next big interview with LWS. Whether youre aiming for your first job or preparing for senior-level positions, weve got you covered.
         </p>
         <a href="/" className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
           Get Started

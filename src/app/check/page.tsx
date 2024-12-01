@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 "use client"
 import React, { useState } from 'react';
@@ -8,7 +10,7 @@ const ProfilePictureUpload = () => {
   const [file, setFile] = useState(null);
   const [updateProfileAvatar, { isLoading, isError, isSuccess, error }] = useUpdateProfileUserMutation();
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e:any) => {
     setFile(e.target.files[0]); // Get the selected file
   };
 
@@ -22,7 +24,7 @@ const ProfilePictureUpload = () => {
       await updateProfileAvatar(file).unwrap();
       alert('Profile picture updated successfully!');
     } catch (err) {
-      alert(`Failed to upload profile picture: ${err?.data?.message || 'Unknown error'}`);
+      alert(`Failed to upload profile picture:  Unkonow Erre`);
     }
   };
 
@@ -33,7 +35,7 @@ const ProfilePictureUpload = () => {
       <button onClick={handleUpload} disabled={isLoading}>
         {isLoading ? 'Uploading...' : 'Upload'}
       </button>
-      {isError && <p style={{ color: 'red' }}>Error: {error?.data?.message || 'Something went wrong'}</p>}
+      {isError && <p style={{ color: 'red' }}>Error: Something went wrong</p>}
       {isSuccess && <p style={{ color: 'green' }}>Profile picture updated successfully!</p>}
     </div>
   );

@@ -15,14 +15,14 @@ type Props = object;
 const Page = (props: Props) => {
   // Get the `auth` state with better type handling
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const user = useSelector((state:any) => state.auth);
+  const user = useSelector((state:any) => state.auth)||"Guest";
 
-  const [activeItem, setActiveItem] = useState<number>(0);
+  
 
   return (
     <>
     
-        <Heading title={`${user?.user?.name} `} description='Elearning Profile'  keywords='Profile Data' />
+        <Heading title={`${user?.user?.name} "Karan"` }  description='Elearning Profile'  keywords='Profile Data' />
         
          <Profile user={user}/>
  

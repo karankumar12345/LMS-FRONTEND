@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useGetSingleCoursesQuery } from '../../../../redux/features/courses/coursesapi';
 import Loading from '@/app/Loading';
 import Heading from '@/utils/Heading';
-import Header from '../Header';
+
 import CoursesPage from './CoursesPage';
-import { loadStripe } from '@stripe/stripe-js';
-import { useCreateOrderMutation, useGetStripePaymentMutation, useGetStripePublishableKeyQuery } from '../../../../redux/features/orderApi/OrderApi';
+
+
 
 interface StripeConfig {
   publishableKey: string;

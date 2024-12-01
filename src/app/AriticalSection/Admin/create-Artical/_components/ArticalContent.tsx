@@ -41,7 +41,7 @@ const ArticalContent: React.FC<ArticalContentProps> = ({
   };
 
   const addSubSubtitle = (sectionIndex: number) => {
-    const updatedContent = articalContent.map((section, sIndex) => {
+    const updatedContent = articalContent.map((section:any, sIndex:number) => {
       if (sIndex === sectionIndex) {
         return {
           ...section,
@@ -61,11 +61,11 @@ const ArticalContent: React.FC<ArticalContentProps> = ({
   };
   
   const addBodySubtitle = (sectionIndex: number, subSubtitleIndex: number) => {
-    const updatedContent = articalContent.map((section, sIndex) => {
+    const updatedContent = articalContent.map((section:any, sIndex:number) => {
       if (sIndex === sectionIndex) {
         return {
           ...section,
-          subsubtitle: section.subsubtitle.map((sub, subIndex) => {
+          subsubtitle: section.subsubtitle.map((sub:any, subIndex:number) => {
             if (subIndex === subSubtitleIndex) {
               return {
                 ...sub,

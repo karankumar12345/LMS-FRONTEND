@@ -1,50 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { userLogin } from './auth/authSlice';
-
-// Helper function to retrieve the token from localStorage
-const getTokenFromLocalStorage = () => {
-  return localStorage.getItem("accessToken");
-};
-
-// Helper function to save tokens to localStorage
-const saveTokensToLocalStorage = (accessToken, refreshToken) => {
-  localStorage.setItem("accessToken", accessToken);
-  localStorage.setItem("refreshToken", refreshToken);
-};
-
-// Helper function to remove tokens from localStorage
-const removeTokensFromLocalStorage = () => {
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("refreshToken");
-};
 
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'https://backendlearn-g3wj.onrender.com/api/v1/',
-    credentials: 'include', // Required for cookies, keep for now in case cookies are used as a fallback
+    credentials: 'include', // Required for cookies
     prepareHeaders: (headers) => {
-      const token = getTokenFromLocalStorage();
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
-      }
-      return headers;
+      // Assume tokens are stored in cookies and handled server-side
+      return headers; // No token management needed here
     },
   }),
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   endpoints: (builder) => ({
     // Endpoint for refreshing the token
     refreshToken: builder.query({
       query: () => ({
         url: 'user/refreshToken',
         method: 'GET',
-        credentials: 'include', // Required for cookies (if using refresh token in cookies)
+        credentials: 'include', // Use cookies for session management
       }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+      async onQueryStarted(_arg, { queryFulfilled }) {
         try {
           const result = await queryFulfilled;
-          // Save the new access token and refresh token in localStorage
-          saveTokensToLocalStorage(result.data.accessToken, result.data.refreshToken);
+          // Token handling is managed server-side; no need for client storage
         } catch (error) {
           console.error("Error refreshing token:", error);
         }
@@ -61,12 +40,11 @@ export const apiSlice = createApi({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          // Save user data and token in localStorage
-          saveTokensToLocalStorage(result.data.token, result.data.refreshToken);
+          // Dispatch user data to the store
           dispatch(
             userLogin({
-              token: result.data.token,
-              user: result.data.user,
+              token: result.data.token || "guest",
+              user: result.data.user || "guest",
             })
           );
         } catch (error) {
@@ -74,13 +52,17 @@ export const apiSlice = createApi({
         }
       },
     }),
-  }), // You can extend endpoints here or in other slices
+  }),
 });
 
 // Export hooks for the queries you created
 export const { useRefreshTokenQuery, useLoadUserQuery } = apiSlice;
 
-// Optionally, add a logout function to clear tokens from localStorage
+// Logout Function
 export const logout = () => {
-  removeTokensFromLocalStorage();
+  // No client-side token cleanup required; relies on server-side session termination
+  fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'https://backendlearn-g3wj.onrender.com/api/v1/'}/user/logout`, {
+    method: 'POST',
+    credentials: 'include',
+  }).catch((err) => console.error("Logout failed:", err));
 };

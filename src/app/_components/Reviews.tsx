@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import Image from 'next/image';
 import React from 'react';
 
 type Props = {};
@@ -106,6 +107,8 @@ const Reviews = (props: Props) => {
                 className="w-14 h-14 rounded-full border-2 border-blue-500 shadow-sm"
                 src={review.avatar}
                 alt="Avatar"
+               // Specify height
+            
               />
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-800">{review.name}</h3>

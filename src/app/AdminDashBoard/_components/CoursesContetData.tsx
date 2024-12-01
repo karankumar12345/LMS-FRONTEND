@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button } from "@/components/ui/moving-border";
 import React from "react";
 
 interface Link {
@@ -5,23 +7,25 @@ interface Link {
   url: string;
 }
 
+
 interface Content {
-  id: number;
-  subtitle: string;
-  videoUrl: string;
-  description: string;
-  videoLength: string;
-  videoPlayer: string;
-  suggestions: string;
-  links: Link[];
+  videoLength: string | number | readonly string[] | undefined;
+  videoPlayer: string | number | readonly string[] | undefined;
+  suggestions: string | number | readonly string[] | undefined;
+  videoThumbnail:string
+  id: number; // Unique identifier for the content
+  subtitle: string; // Title of the video or content
+  videoUrl: string; // URL for the video
+  description: string; // Description of the content
+  links: Link[]; // Associated links
 }
 
 interface Section {
   id: number;
-  title: string;
-  description: string;
-  subtitles: Content[];
-  isOpen?: boolean;
+  isOpen: any;
+  title: string; // Title of the section
+  description: string; // Description of the section
+  subtitles: Content[]; // Array of content within the section
 }
 
 type Props = {
@@ -62,10 +66,12 @@ const CourseContentEdit: React.FC<Props> = ({
       subtitle: "",
       videoUrl: "",
       description: "",
+
+      links: [{ title: "", url: "" }],
       videoLength: "",
       videoPlayer: "",
       suggestions: "",
-      links: [{ title: "", url: "" }],
+      videoThumbnail: ""
     };
   
     setCourseContentData((prevState) =>
@@ -441,9 +447,14 @@ const CourseContentEdit: React.FC<Props> = ({
       >
         Add Section
       </button>
-      <button onClick={() => setActive(active + 1)} className="ml-4 text-gray-700">
+<div className="mt-8 flex justify-between">
+<Button onClick={() => setActive(active - 1)} >
+        Prev
+      </Button>
+      <Button onClick={() => setActive(active + 1)} >
         Next
-      </button>
+      </Button>
+</div>
     </div>
   );
 };

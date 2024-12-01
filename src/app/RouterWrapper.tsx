@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import {  usePathname } from "next/navigation";
 import Loading from "./Loading";
 import { useLoadUserQuery } from "../../redux/features/apislice";
 
@@ -10,7 +10,7 @@ const RouterWrapper: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [isRouteLoading, setIsRouteLoading] = useState(false);
   const { isLoading: isUserLoading } = useLoadUserQuery({});
-  const router = useRouter();
+
   const pathname = usePathname();
 
   useEffect(() => {

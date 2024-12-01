@@ -1,7 +1,7 @@
 import StudentList from "@/components/AnimatedTooltip";
 import { MovingBorderDemo } from "@/components/border-moving";
 import { TextRevealCardPreview } from "@/components/text-reval";
-import { TextRevealCard } from "@/components/ui/text-reveal-card";
+// import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import Link from "next/link";
 
 import React from "react";

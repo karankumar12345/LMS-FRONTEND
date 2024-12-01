@@ -2,14 +2,14 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Image from "next/image";
+// import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { FaLock, FaBook, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
-import { useUpdatePasswordUserMutation, useUpdateProfileAvatarMutation, useUpdateProfileUserMutation } from "../../../../redux/features/auth/authapi";
+import { FaLock, FaBook, FaUserCircle } from "react-icons/fa";
+import { useUpdatePasswordUserMutation, useUpdateProfileUserMutation } from "../../../../redux/features/auth/authapi";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/moving-border";
-import Link from "next/link";
-import { Avatar } from "@mui/material";
+// // import Link from "next/link";
+// import { Avatar } from "@mui/material";
 import { useRouter } from "next/navigation";
 import ThemedAllCourses from "./EnroleedCourses";
 
@@ -22,7 +22,7 @@ const SideBar: React.FC<Props> = ({ user }) => {
     const router = useRouter();
 
     const [registerProfile, { isSuccess: isProfileUpdated, error: profileError }] = useUpdateProfileUserMutation();
-    const [updateAvatar, { isSuccess: isAvatarUpdated, error: avatarError }] = useUpdateProfileAvatarMutation();
+  
     const [updatePassword, { isSuccess: isPasswordUpdated, error: PasswordError }] = useUpdatePasswordUserMutation();
 
     const [oldPassword, setOldPassword] = useState("");
@@ -31,8 +31,7 @@ const SideBar: React.FC<Props> = ({ user }) => {
     const [updateError, setUpdateError] = useState("");
     const [name, setName] = useState(user?.user?.name);
     const [email, setEmail] = useState(user?.user?.email);
-    const [file, setFile] = useState(user?.user?.avatar?.url);
-    const [avatarPreview, setAvatarPreview] = useState(user?.user?.avatar?.url); // Preview for new avatar
+    // Preview for new avatar
     const [activeSection, setActiveSection] = useState<string>("My Account");
     const [isSidebarOpen, setSidebarOpen] = useState(false); // State for mobile sidebar visibility
 
@@ -45,19 +44,14 @@ const SideBar: React.FC<Props> = ({ user }) => {
         if (profileError) {
             toast.error("Failed to update profile. Please try again.");
         }
-        if (isAvatarUpdated) {
-            toast.success("Avatar updated successfully");
-        }
-        if (avatarError) {
-            toast.error("Failed to update avatar. Please try again.");
-        }
+ 
         if (isPasswordUpdated) {
             toast.success("Password updated successfully");
         }
         if (PasswordError) {
             toast.error("Failed to update avatar. Please try again.");
         }
-    }, [isProfileUpdated, profileError, isAvatarUpdated, avatarError,PasswordError,isPasswordUpdated]);
+    }, [isProfileUpdated, profileError,PasswordError,isPasswordUpdated,user.user.name,user.user.email]);
 
     const handleSubmitProfile = async (e: React.FormEvent) => {
         e.preventDefault();

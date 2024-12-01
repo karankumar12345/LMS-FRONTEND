@@ -120,7 +120,7 @@ const AllCourses: React.FC = () => {
   }
 
   if (coursesError) {
-    return <h1 style={{ color: 'red' }}>Error: {coursesError?.message}</h1>;
+    return <h1 style={{ color: 'red' }}>Error: Courses Error try after some time</h1>;
   }
 
   return (

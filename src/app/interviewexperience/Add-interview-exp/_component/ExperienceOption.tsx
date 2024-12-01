@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
-import { IoMdCheckbox, IoMdCheckmark } from 'react-icons/io'
+import {  IoMdCheckmark } from 'react-icons/io'
 
 type Props = {
     active:number,

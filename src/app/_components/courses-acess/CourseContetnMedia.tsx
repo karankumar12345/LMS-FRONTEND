@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CoursesPlayer from '@/app/AdminDashBoard/_components/CoursesPlayer';
 import React, { useState, ReactNode, useEffect } from 'react';
 import { useAddQuestionMutation, useAddReplyMutation, useAddReviewMutation } from '../../../../redux/features/courses/coursesapi';
 import toast from 'react-hot-toast';
-import axios from 'axios';
+
 
 type VideoLink = {
     title: string;
@@ -29,6 +31,7 @@ type Subtitle = {
 };
 
 type CourseSection = {
+    _id: any;
     title: ReactNode;
     questions: Question[]; // Updated to use the new Question type
     description: string;
@@ -37,6 +40,7 @@ type CourseSection = {
 };
 
 type CourseData = {
+    reviews: any;
     courseData: CourseSection[];
 };
 
@@ -242,13 +246,13 @@ const [addReview] =useAddReviewMutation()
                                                 >
                                                     {isLoadingReply ? 'Submitting...' : 'Submit Reply'}
                                                 </button>
-                                                {replyError && <p className="text-red-500">{replyError.message}</p>}
+                                                {replyError && <p className="text-red-500">Sorry But Some Problem Try After some time</p>}
                                             </form>
                                         )}
                                         {item?.questionReplies && item?.questionReplies.length > 0 && (
                                             <div className="mt-2 pl-4 border-l-2 border-gray-300">
                                                 <h4 className="font-semibold">Replies:</h4>
-                                                {item?.questionReplies.map((reply, replyIndex) => (
+                                                {item?.questionReplies.map((reply:any, replyIndex:number) => (
                                                     <p key={replyIndex} className="text-gray-600">- {reply.answer}</p>
                                                 ))}
                                             </div>
@@ -273,7 +277,7 @@ const [addReview] =useAddReviewMutation()
                                 >
                                     {isLoadingQuestion ? 'Submitting...' : 'Add Question'}
                                 </button>
-                                {questionError && <p className="text-red-500">{questionError.message}</p>}
+                                {questionError && <p className="text-red-500">Some Problem To Add Question</p>}
                             </form>
                         </div>
                     </div>
@@ -284,7 +288,7 @@ const [addReview] =useAddReviewMutation()
                             <h2 className="text-xl font-semibold mb-4 text-gray-700">Reviews</h2>
                             <div className="space-y-4">
                                 {data?.reviews?.length > 0 ? (
-                                    data?.reviews?.map((review) => (
+                                    data?.reviews?.map((review:any) => (
                                         <div key={review._id} className="p-4 border border-gray-300 rounded-lg  shadow-md">
                                             <h3 className="font-medium text-gray-800">{review.user}</h3>
                                             <p className="text-gray-600">{review.comment}</p>
@@ -292,7 +296,7 @@ const [addReview] =useAddReviewMutation()
                                             {review.commentReplies.length > 0 && (
                                                 <div className="mt-2 pl-4 border-l-2 border-gray-300">
                                                     <h4 className="font-semibold">Replies:</h4>
-                                                    {review.commentReplies.map((reply, replyIndex) => (
+                                                    {review.commentReplies.map((reply:any, replyIndex:number) => (
                                                         <p key={replyIndex} className="text-gray-600">- {reply.content}</p>
                                                     ))}
                                                 </div>

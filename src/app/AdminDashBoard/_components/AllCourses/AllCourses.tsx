@@ -4,9 +4,9 @@ import { Box, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { useGetAllCoursesQuery, useUpdateCourseMutation, useDeleteCourseMutation, useGetSingleCoursesQuery } from '../../../../../redux/features/courses/coursesapi';
+import { useGetAllCoursesQuery, useDeleteCourseMutation } from '../../../../../redux/features/courses/coursesapi';
 import { format } from "timeago.js";
-import { redirect, useRouter } from 'next/navigation';
+import {  useRouter } from 'next/navigation';
 
 const defaultTheme = createTheme({
   palette: {
@@ -115,7 +115,7 @@ const AllCourses: React.FC = () => {
   }
 
   if (coursesError) {
-    return <h1 style={{ color: 'red' }}>Error: {coursesError?.message}</h1>;
+    return <h1 style={{ color: 'red' }}>Error: Courses Error Try After Some Time</h1>;
   }
 
   return (

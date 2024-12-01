@@ -2,13 +2,13 @@
 import { Button, IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import React from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 type Props = {
   active: number;
   setActive: (step: number) => void;
   round: Round[];
-  setRound: (content: Round[]) => void;
+  setRound: (content: any) => void;
 };
 
 interface InterviewQuestion {
@@ -36,10 +36,16 @@ const ExperienceContent = ({ active, setActive, round, setRound }: Props) => {
     sectionIndex: number,
     key: keyof Round
   ) => {
-    const newRound = [...round];
-    newRound[sectionIndex][key] = e.target.value;
-    setRound(newRound);
+    setRound((prevRound: any) => {
+      const updatedRound = [...prevRound];
+      updatedRound[sectionIndex] = {
+        ...updatedRound[sectionIndex],
+        [key]: e.target.value,
+      };
+      return updatedRound;
+    });
   };
+  
 
   const handleQuestionChange = (
     e: React.ChangeEvent<HTMLInputElement>,

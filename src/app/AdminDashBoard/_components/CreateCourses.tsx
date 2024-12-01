@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 "use client";
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import AdminSidebar from "@/app/_components/Admin/sidebar/AdminSidebar";
 import Heading from "@/utils/Heading";
 import React, { useEffect, useState } from "react";
@@ -13,10 +14,9 @@ import CourseContent from "./CourseContent";
 import CoursePreview from "./CoursePreview";
 import { useCreateCourseMutation } from "../../../../redux/features/courses/coursesapi";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
 
 type Props = {
-  isFlag:boolean
+  isFlag: boolean;
 };
 
 interface Thumbnail {
@@ -24,7 +24,7 @@ interface Thumbnail {
   url: string;
 }
 
-interface CourseInfo {
+interface CourseInfoType {
   name: string;
   description: string;
   price: string;
@@ -40,36 +40,38 @@ interface Link {
   url: string;
 }
 
-
 interface Content {
-  id: number; // Unique identifier for the content
-  subtitle: string; // Title of the video or content
-  videoUrl: string; // URL for the video
-  description: string; // Description of the content
-  Links: Link[]; // Associated links
+  id: number;
+  subtitle: string;
+  videoUrl: string;
+  description: string;
+ 
+
+  Links: Link[];
 }
 
 interface Section {
-  title: string; // Title of the section
-  description: string; // Description of the section
-  components: Content[]; // Array of content within the section
+  isOpen: any;
+  id: number; // Unique identifier for the section
+  title: string;
+  description: string;
+  components: Content[];
 }
 
 const CreateCourses = (props: Props) => {
-  const [CreateCourse, { isLoading, isSuccess, error }] = useCreateCourseMutation();
+  const [createCourse, { isLoading, isSuccess, error }] = useCreateCourseMutation();
 
   useEffect(() => {
     if (isSuccess) {
       toast.success("Course Created Successfully");
     }
     if (error && "data" in error) {
-      const errorData = error as any;
-      toast.error(errorData.data.message);
+      toast.error((error as any).data.message);
     }
   }, [isLoading, isSuccess, error]);
 
   const [active, setActive] = useState(0);
-  const [courseInfo, setCoursesInfo] = useState<CourseInfo>({
+  const [courseInfo, setCourseInfo] = useState<CourseInfoType>({
     name: "",
     description: "",
     price: "",
@@ -77,55 +79,52 @@ const CreateCourses = (props: Props) => {
     tags: "",
     level: "",
     demoUrl: "",
-    thumbnail: {
-      public_id: "",
-      url: "",
-    },
+    thumbnail: { public_id: "", url: "" },
   });
 
   const [benefits, setBenefits] = useState([{ title: "" }]);
   const [prerequisites, setPrerequisites] = useState([{ title: "" }]);
-  const [courseContentData, setCourseContentData] = useState<Section[]>([
-    {
-      title: "", // Initialize with a default section title
-      description: "", // Initialize with a default description
-      components: [
-        {
-          id: Date.now(), // Generate a unique ID
-          subtitle: "", // Initialize with an empty subtitle
-          videoUrl: "", // Initialize with an empty video URL
-          description: "", // Initialize with an empty description
-          Links: [{ title: "", url: "" }], // Initialize with one empty link
-        },
-      ],
-    },
-  ]);
-  
+ const [courseContentData, setCourseContentData] = useState<Section[]>([
+  {
+    title: "",
+    description: "",
+    components: [
+      {
+        id: Date.now(),
+        subtitle: "",
+        videoUrl: "",
+        description: "",
+        Links: [{ title: "", url: "" }],
+       
+      },
+    ],
+    isOpen: false,
+    id: 0
+  },
+]);
+
+const formatCourseContent = () => {
+  return courseContentData.map((section) => ({
+    title: section.title,
+    description: section.description,
+    subtitles: section.components.map((content) => ({
+      subtitle: content.subtitle,
+      description: content.description,
+      videoUrl: content.videoUrl,
+      videoThumbnail: {}, // Replace with actual thumbnail
+      videoLength: 0, // Replace with actual length
+      videoPlayer: "YouTube", // Replace with actual player
+      links: content.Links.map((link) => ({ title: link.title, url: link.url })), // Corrected to 'Links'
+      suggestions: "karan",
+    })),
+    questions: [], // Replace if required
+  }));
+};
 
   const handleSubmit = () => {
-    // Ensure benefits and prerequisites are formatted as arrays of objects
     const formattedBenefits = benefits.map((item) => ({ title: item.title }));
     const formattedPrerequisites = prerequisites.map((item) => ({ title: item.title }));
-  
-    // Format course content to match the schema
-    const formattedCourseContent = courseContentData.map((section) => ({
-      title: section.title,
-      description: section.description,
-      subtitles: section.components.map((content) => ({
-        subtitle: content.subtitle,
-        description: content.description,
-        videoUrl: content.videoUrl,
-        videoThumbnail: {}, // Replace with actual thumbnail object if available
-        videoLength: 0, // Replace with actual video length if available
-        videoPlayer: "YouTube", // Replace with actual video player type if available
-        links: content?.Links?.map((link) => ({ title: link.title, url: link.url })),
-        suggestions: "karan", // Replace with actual suggestions if available
-      })),
-      questions: [], // Initialize with an empty array or populate with actual comments if available
-    }));
-  
-    console.log("Formatted Course Content:", formattedCourseContent);
-    // Prepare final data object for the API
+
     const data = {
       name: courseInfo.name,
       description: courseInfo.description,
@@ -137,19 +136,20 @@ const CreateCourses = (props: Props) => {
       thumbnail: courseInfo.thumbnail,
       benefits: formattedBenefits,
       prerequisites: formattedPrerequisites,
-      courseData: formattedCourseContent,
+      courseData: formatCourseContent(),
     };
-  
+
     return data;
   };
 
-  
-    
-  const handleCoursesCreate = async (e: any) => {
-
-    const data = handleSubmit();
-    if (!isLoading) {
-      await CreateCourse(data);
+  const handleCoursesCreate = async () => {
+    try {
+      const data = handleSubmit();
+      if (!isLoading) {
+        await createCourse(data).unwrap();
+      }
+    } catch (err: any) {
+      toast.error(err?.data?.message || "Failed to create course");
     }
   };
 
@@ -157,7 +157,12 @@ const CreateCourses = (props: Props) => {
     <div className="w-full flex min-h-screen">
       <div className="w-[80%]">
         {active === 0 && (
-          <CourseInfo courseInfo={courseInfo} setCourseInfo={setCoursesInfo} active={active} setActive={setActive} />
+          <CourseInfo
+            courseInfo={courseInfo}
+            setCourseInfo={setCourseInfo}
+            active={active}
+            setActive={setActive}
+          />
         )}
         {active === 1 && (
           <CourseData
@@ -174,14 +179,17 @@ const CreateCourses = (props: Props) => {
             courseContentData={courseContentData}
             setCourseContentData={setCourseContentData}
             active={active}
-            setActive={setActive} handleSubmit={function (e: any): void {
-              throw new Error("Function not implemented.");
-            } }          />
+            setActive={setActive}
+          />
         )}
         {active === 3 && (
-          <CoursePreview courseData={handleSubmit()} active={active} setActive={setActive} handleSubmit={handleCoursesCreate} setCourseData={function (courseData: any): void {
-            throw new Error("Function not implemented.");
-          } } />
+          <CoursePreview
+            courseData={handleSubmit()}
+            active={active}
+            setActive={setActive}
+            handleSubmit={handleCoursesCreate} setCourseData={function (courseData: any): void {
+              throw new Error("Function not implemented.");
+            } }          />
         )}
       </div>
 

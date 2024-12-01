@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
@@ -46,7 +47,7 @@ interface Subtitles {
 }
 
 const EditArtical: React.FC<Props> = () => {
-  const { id } = useParams();
+  const  id  = useParams();
   const { data, isLoading, error } = useGetSingleArticalQuery(id || "");
   const [updateArtical] = useUpdateArticalMutation();
 

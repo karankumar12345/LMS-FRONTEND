@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
   title:string
 }
 
-const CoursesPlayer = ({videoUrl,title}:Props) => {
+const CoursesPlayer = ({videoUrl}:Props) => {
   const [videoData,setVideoData]=useState({
     otp:"",
     playbackInfo:"",

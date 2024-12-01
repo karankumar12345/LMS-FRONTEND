@@ -113,7 +113,7 @@ const AllUser: React.FC<AllUserProps> = ({ isTeam }) => {
   }
 
   if (error) {
-    return <h1 style={{ color: 'red' }}>Error: {error.message}</h1>;
+    return <h1 style={{ color: 'red' }}>Error: Sorry But Try After Some Time</h1>;
   }
 
   return (

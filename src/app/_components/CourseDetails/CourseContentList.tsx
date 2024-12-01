@@ -19,9 +19,9 @@ const CourseContentList = ({ data, activeVideo, setActiveVideo, isDemo }: Props)
     );
 
     // Extract unique video sections
-    const videoSections: string[] = [
-        ...new Set<string>(data?.map((section: any) => section?._id))
-    ];
+    // const videoSections: string[] = [
+    //     ...new Set<string>(data?.map((section: any) => section?._id))
+    // ];
 
     const totalCount = 0;
     const toggleSection = (sectionId: string) => {

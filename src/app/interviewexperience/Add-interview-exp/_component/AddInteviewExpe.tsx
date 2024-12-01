@@ -9,7 +9,7 @@ import { useCreateInterviewApiMutation } from "../../../../../redux/features/Exp
 import toast from "react-hot-toast";
 import { useLoadUserQuery } from "../../../../../redux/features/apislice";
 import { useRouter } from 'next/navigation'
-type Props = {};
+
 
 interface InterviewInfo {
   user: any;
@@ -37,7 +37,7 @@ interface Round {
   interviewQuestion: InterviewQuestion[];
 }
 
-const AddInterviewExpe = (props: Props) => {
+const AddInterviewExpe = () => {
   const router = useRouter()
   const [active, setActive] = useState(0);
 

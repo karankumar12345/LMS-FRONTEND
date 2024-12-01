@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import "./globals.css";
@@ -6,10 +7,10 @@ import { ThemeProvider } from "@/utils/theme-provider";
 import { Toaster } from "react-hot-toast";
 import AppProvider from "./Provider";
 import { SessionProvider } from "next-auth/react";
-import { useLoadUserQuery } from "../../redux/features/apislice";
-import Loading from "./Loading";
+
+
 import Header from "./_components/Header";
-import { useState } from "react";
+
 import RouterWrapper from "./RouterWrapper"; // New component
 
 const poppins = Poppins({

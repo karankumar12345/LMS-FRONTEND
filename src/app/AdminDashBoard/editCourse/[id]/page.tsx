@@ -1,3 +1,4 @@
+"use client"
 import AdminSidebar from '@/app/_components/Admin/sidebar/AdminSidebar'
 import Heading from '@/utils/Heading'
 import React from 'react'
@@ -5,12 +6,19 @@ import React from 'react'
 import DashBoardHeader from '@/app/_components/Admin/DashBoardHeader'
 import Admin from '@/app/_hooks/AdminProt'
 import EditCourses from '../../_components/EditCourses'
+// import { useParams } from 'next/navigation'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-type Props = {}
+type Props = {
+  params: {
+    id: string; // Ensure id is of type string
+  };
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Page = (props: Props) => {
+const Page: React.FC<Props> =({ params }) => {
+   
+  const { id } = params;
+
   return (
     <Admin>
     <div>
@@ -24,7 +32,7 @@ const Page = (props: Props) => {
             <div className='w-[84%] '>
                 <DashBoardHeader/>
 
-         <EditCourses isFlag={true}/>
+         <EditCourses isFlag={true} id={id}/>
             </div>
           
         </div> 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 "use client";
 import AdminSidebar from '@/app/_components/Admin/sidebar/AdminSidebar';
 import Heading from '@/utils/Heading';
@@ -95,7 +96,7 @@ const UserDeletionDialog: React.FC<UserDialogProps> = ({ userEmail, onConfirm, o
 const Page: React.FC<Props> = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedUserEmail, setSelectedUserEmail] = useState<string>('');
-  const [updateUserRole, { isLoading, data, error }] = useUpdateUserRoleMutation();
+  const [updateUserRole] = useUpdateUserRoleMutation();
 
   const handleOpenDialog = () => {
     setOpenDialog(true);

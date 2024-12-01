@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
-import { Box, IconButton, TextField, Button, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/moving-border";
 
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +31,7 @@ const Chatbot: React.FC = () => {
         })
         .catch((err) => console.error("Error fetching chat history:", err));
     }
-  }, [isOpen]);
+  }, [isOpen,email]);
 
   // Handle message send
   const handleSendMessage = () => {
@@ -131,7 +133,7 @@ const Chatbot: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-              sx={{ marginRight: "10px" }}
+            
             />
             <Button onClick={handleSendMessage} variant="contained"  className="ml-10" >
               Send

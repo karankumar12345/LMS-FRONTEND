@@ -7,7 +7,7 @@ import React from 'react';
 import DashBoardHeader from '@/app/_components/Admin/DashBoardHeader';
 import Admin from '@/app/_hooks/AdminProt';
 import ThemedAllUser from '../_components/ALLUser/AllUsers';
-import { useUpdateUserRoleMutation } from '../../../../redux/features/auth/authapi';
+// import { useUpdateUserRoleMutation } from '../../../../redux/features/auth/authapi';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Props = {};

@@ -7,7 +7,7 @@ type Props = {}
 const DashBoardHero = (props: Props) => {
   return (
     <>
-    <DashBoardHero/>
+karan
     </>
   )
 }
