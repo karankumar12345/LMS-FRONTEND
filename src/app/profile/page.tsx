@@ -21,11 +21,11 @@ const Page = (props: Props) => {
 
   return (
     <>
-    
+    <Protected>
         <Heading title={`${user?.user?.name} "Karan"` }  description='Elearning Profile'  keywords='Profile Data' />
         
          <Profile user={user}/>
- 
+         </Protected>
     </>
   );
 };
