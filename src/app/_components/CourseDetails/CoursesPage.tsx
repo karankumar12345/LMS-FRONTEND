@@ -18,6 +18,7 @@ import CheckForm from './CheckForm'
 import { useLoadUserQuery } from '../../../../redux/features/apislice'
 import { useParams } from 'next/navigation'
 import { useCreateOrderbyuserMutation } from '../../../../redux/features/courses/coursesapi'
+import { useRouter } from 'next/navigation'
 // import { useCreateOrderMutation } from '../../../../redux/features/courses/coursesapi'
 
 type Props = {
@@ -27,7 +28,7 @@ type Props = {
 }
 
 const CoursesPage = ({ data }: Props) => {
-
+const router=useRouter()
   
   const {id} =useParams()
 const {data:userData}=useLoadUserQuery(undefined,{})
@@ -46,8 +47,11 @@ const user=userData?.user
       coursesID:id,
       userId:user?._id
     }
-  alert(data)
+ 
     await createOrder(data)
+
+    router.push(`/courses-acess/${data?.course?._id}`)
+    
 
   }
 

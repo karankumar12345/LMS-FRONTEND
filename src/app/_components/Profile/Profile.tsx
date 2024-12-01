@@ -28,7 +28,7 @@ const Profile = ({ user }: Props) => {
 
     return (
         <div className='w-[85%] flex mx-auto h-fit'>
-            <div className={`w-[60px] 800px:w-[310px] h-[450px]  bg-opacity-90 border-red-900  border-r-2 rounded-sm mt-[80px] mb-[80px] sticky ${scroll ? "top-[120px]" : "top-[130px]"} left-[30px]`}>
+            <div className={`w-[600px] 800px:w-[310px] h-[450px]  bg-opacity-90 border-red-900  border-r-2 rounded-sm mt-[80px] mb-[80px] sticky ${scroll ? "top-[120px]" : "top-[130px]"} left-[30px]`}>
                 {/* You can use the `user` prop here if needed */}
              <SideBar user={user}/>
             </div>

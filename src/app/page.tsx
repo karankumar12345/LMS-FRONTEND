@@ -7,6 +7,9 @@ import Hero from "./_components/Hero";
 import Courses from "./_components/Courses";
 import Reviews from "./_components/Reviews";
 import FAQ from "./_components/FAQ";
+import Articals from "./Articles/_component/Artical";
+import Chatbot from "./_components/ChatBot";
+import { GlobeDemo } from "@/components/Global";
 
 
 export default function Home() {
@@ -17,9 +20,12 @@ export default function Home() {
             {/* Pass setActiveItem to Header */}
 
           <Hero/>
+          <GlobeDemo/>
           <Courses/>
+          <Articals/>
           <Reviews/>
           <FAQ/>
+          <Chatbot/>
         </>
     );
 }

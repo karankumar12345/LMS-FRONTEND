@@ -5,13 +5,13 @@ import { Poppins, Josefin_Sans } from "next/font/google";
 import { ThemeProvider } from "@/utils/theme-provider";
 import { Toaster } from "react-hot-toast";
 import AppProvider from "./Provider";
-import { SessionProvider } from "next-auth/react"; 
+import { SessionProvider } from "next-auth/react";
 import { useLoadUserQuery } from "../../redux/features/apislice";
 import Loading from "./Loading";
 import Header from "./_components/Header";
 import { useState } from "react";
+import RouterWrapper from "./RouterWrapper"; // New component
 
-// Load Google Fonts
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -29,24 +29,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Manage active item state
-  const [activeItem, setActiveItem] = useState<string>("");
+ 
 
   return (
     <html lang="en">
       <body
         className={`${poppins.variable} ${josefinSans.variable} !bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}
       >
-        {/* Wrap the session provider to manage session state */}
         <SessionProvider>
           <AppProvider>
-            {/* Theme management for light/dark mode */}
-       
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Header activeItem={activeItem} setActiveItem={setActiveItem} />
-              <ContentWrapper>{children}</ContentWrapper>
+              <Header activeItem={0} setActiveItem={function (item: number): void {
+                throw new Error("Function not implemented.");
+              } } />
+              <RouterWrapper>{children}</RouterWrapper>
               <Toaster position="top-center" />
-
             </ThemeProvider>
           </AppProvider>
         </SessionProvider>
@@ -54,12 +51,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-const ContentWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isLoading } = useLoadUserQuery({});
-
-  // Avoid client-server mismatch by rendering loading component consistently
-  if (isLoading) return <Loading />;
-
-  return <>{children}</>;
-};

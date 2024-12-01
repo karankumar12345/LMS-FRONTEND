@@ -1,5 +1,7 @@
 import StudentList from "@/components/AnimatedTooltip";
 import { MovingBorderDemo } from "@/components/border-moving";
+import { TextRevealCardPreview } from "@/components/text-reval";
+import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import Link from "next/link";
 
 import React from "react";
@@ -9,7 +11,7 @@ const Hero: React.FC = () => {
     <section className=" text-white min-h-screen flex flex-col items-center justify-center p-8">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Crack the Code to Success with ELearning 
+        <TextRevealCardPreview/>
         </h1>
         <p className="text-xl md:text-2xl mb-8">
           Elevate your programming skills, and unlock the world of coding possibilities.
@@ -45,7 +47,7 @@ const Hero: React.FC = () => {
   <Link href="/interviewExper">
     <MovingBorderDemo text="Interview Experience" />
   </Link>
-  <Link href="/AriticalSection/admin">
+  <Link href="/AriticalSection">
     <MovingBorderDemo text="Artical Section DashBoard" />
   </Link>
 </div>
