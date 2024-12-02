@@ -1,6 +1,7 @@
 import StudentList from "@/components/AnimatedTooltip";
 import { MovingBorderDemo } from "@/components/border-moving";
 import { TextRevealCardPreview } from "@/components/text-reval";
+import { Button } from "@/components/ui/moving-border";
 // import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import Link from "next/link";
 
@@ -35,9 +36,9 @@ const Hero: React.FC = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mt-8">
 
-  <Link href="/interview-practice">
-    <MovingBorderDemo text="Interview Practice" />
-  </Link>
+      <Link href="https://aceprepkaran-lucx.vercel.app/">
+                <Button >Interview Practice</Button>
+            </Link>
   <Link href="/Articles">
     <MovingBorderDemo text="Article" />
   </Link>
