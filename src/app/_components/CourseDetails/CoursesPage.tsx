@@ -161,12 +161,12 @@ const user=userData?.user
             {isPurchased?(
               <Button>
                 <Link className = 'inline-block' href={`/courses-acess/${data?.course?._id}`} >
-                 Already Acess </Link>
+                 Already Access </Link>
                  </Button>
 
             ):
             (
-                <Button  onClick={handleOrder}> Buy Now ₹{data.course.price}</Button>
+                <Button  onClick={handleOrder}> Free Access</Button>
             )}
           </div>
           <br />
