@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
  /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-empty-object-type */
@@ -166,11 +167,11 @@ const handleDrop = (e: React.DragEvent) => {
                 {articlaInfo.thumbnail && (
     <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Thumbnail Preview:</label>
-        <Image
-            src={typeof articlaInfo.thumbnail === "string" ? articlaInfo.thumbnail : articlaInfo.thumbnail.url}
-            alt="Thumbnail preview"
-            className="mt-2 w-full h-64 object-cover border border-gray-300 rounded-md shadow-sm"
-        />
+        <img
+                            src={articlaInfo.thumbnail}
+                            alt="Thumbnail preview"
+                            className="mt-2 w-full h-64 object-cover border border-gray-300 rounded-md shadow-sm"
+                        />
     </div>
 )}
 

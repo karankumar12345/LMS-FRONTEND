@@ -133,7 +133,7 @@ export function Login() {
           <BottomGradient />
         </button>
         
-        <div>If You  Have Account Then Click        <Link href={"/Auth/Login"} className="text-blue-800">  SignUp </Link></div>
+        <div>If You  Have Account Then Click        <Link href={"/Auth/login"} className="text-blue-800">  Login </Link></div>
       
       </form>
     </div>

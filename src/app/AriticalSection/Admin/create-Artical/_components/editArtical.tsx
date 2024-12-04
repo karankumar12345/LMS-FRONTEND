@@ -46,9 +46,12 @@ interface Subtitles {
   subsubtitle: SubSubTitleSchema[];
 }
 
-const EditArtical: React.FC<Props> = () => {
+const EditArtical: React.FC<Props> = ({}) => {
+
   const  id  = useParams();
-  const { data, isLoading, error } = useGetSingleArticalQuery(id || "");
+  
+  
+  const { data, isLoading, error } = useGetSingleArticalQuery(id?.id || "");
   const [updateArtical] = useUpdateArticalMutation();
 
   const [active, setActive] = useState(0);
@@ -93,7 +96,7 @@ const EditArtical: React.FC<Props> = () => {
     };
 
     try {
-        await updateArtical({ id, data: payload }).unwrap();
+        await updateArtical({ id:id?.id, data: payload }).unwrap();
       alert("Article updated successfully!");
     } catch (err: any) {
       console.error("Failed to update article:", err);

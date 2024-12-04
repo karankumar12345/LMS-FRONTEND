@@ -33,7 +33,7 @@ export function ThreeDCardDemo({item}:props) {
           className="w-full mt-4"
         >
           <Image
-            src={item.thumbnail.url}
+            src={item.thumbnail.url || item.thumbnail}
             height="1000"
             width="1000"
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
