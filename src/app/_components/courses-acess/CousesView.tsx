@@ -6,7 +6,8 @@ import CourseContentMedia from './CourseContetnMedia';
 import { CourseSections } from './Lession';
 
 type Props = {
-    id: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    id: any;
 };
 
 const CoursesView: React.FC<Props> = ({ id }) => {
