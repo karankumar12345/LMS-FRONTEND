@@ -13,7 +13,7 @@ const CoursesPlayer = ({videoUrl}:Props) => {
   }
 )
 useEffect(()=>{
-axios.post('http://localhost:8000/api/v1/course/getvideourl',{
+axios.post('https://backendlearn-g3wj.onrender.com/api/v1/course/getvideourl',{
   videoId:videoUrl,
 
 }).then((res)=>{
