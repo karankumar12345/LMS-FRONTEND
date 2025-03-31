@@ -1,6 +1,6 @@
 export const metadata = {  
-    title: "LMS | Create Courses, Collaborate & Manage Learning",  
-    description: "LMS is a powerful platform for creating courses and lessons where users can share resources, participate in discussions, manage assignments and quizzes, and collaborate on learning content.",  
+    title: " |LMS | Karan's MERN LMS | Engaging Online Learning | LMS for Courses & Collaboration|MERN Stack LMS | Courses, Quizzes, & Discussions|LMS Platform | Create & Collaborate on Online Courses ",  
+    description: "Discover learning-bac.vercel.app, a robust Learning Management System (LMS) developed by Karan Kumar. This platform empowers educators and learners to create, manage, and engage with online courses effectively. Featuring tools for course creation, lesson management, discussion forums, assignments, quizzes, and collaborative learning, our MERN Stack-powered LMS provides a seamless and interactive educational experience. Explore our platform for online learning, e-learning, and tech education. Enhance student engagement and utilize instructor tools for efficient course delivery. Learn more about our comprehensive LMS solutions",  
     keywords: [
       "LMS",
       "Article",
