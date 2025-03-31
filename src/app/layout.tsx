@@ -24,6 +24,53 @@ const josefinSans = Josefin_Sans({
   subsets: ["latin"],
   variable: "--font-josefin-sans",
 });
+export const metadata = {  
+  title: "LMS | Create Courses, Collaborate & Manage Learning",  
+  description: "LMS is a powerful platform for creating courses and lessons where users can share resources, participate in discussions, manage assignments and quizzes, and collaborate on learning content.",  
+  keywords: [
+    "LMS",
+
+    "Artical",
+    "Documenation",
+    "LMS Karan",
+    "Learning Management System",
+    "Course Creation",
+    "Lesson Management",
+    "Discussion Forums",
+    "Assignments Management",
+    "Quizzes",
+    "Collaboration Tools",
+    "Educational Content",
+    "Online Learning",
+    "E-Learning",
+    "Student Engagement",
+    "Instructor Tools",
+    "MERN Stack",
+    "Next.js",
+    "JavaScript",
+    "Tech Education",
+  ],  
+  openGraph: {
+    title: "LMS | Create Courses, Collaborate & Manage Learning",
+    description: "An advanced LMS platform for course creation, discussions, assignments, collaboration, and interactive learning.",
+    url: "https://learning-bac.vercel.app/",  // Update with the actual project URL
+    type: "website",
+    images: [
+      {
+        url: "https://photos.fife.usercontent.google.com/pw/AP1GczP3DE3kpLXWFTYZfHzGYDysfdnCrjctV91nNg-PQ_ftJl74EJhsV_lI=w958-h539-s-no-gm?authuser=0", // Replace with your actual image URL
+        width: 1200,
+        height: 630,
+        alt: "LMS Platform - Courses, Collaboration & Learning",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LMS | Create Courses, Collaborate & Manage Learning",
+    description: "A Next.js-powered LMS platform for course creation, discussions, assignments, and collaboration in online learning.",
+    images: ["https://photos.fife.usercontent.google.com/pw/AP1GczP3DE3kpLXWFTYZfHzGYDysfdnCrjctV91nNg-PQ_ftJl74EJhsV_lI=w958-h539-s-no-gm?authuser=0"], // Ensure it's a valid absolute URL
+  },
+};
 
 export default function RootLayout({
   children,
@@ -34,6 +81,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="EMRmOscRW_F2FevSrX3DYYlXCsXA5A80jolVHKYJG8Y" />
+      </head>
       <body
         className={`${poppins.variable} ${josefinSans.variable} !bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}
       >
