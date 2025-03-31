@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client";
-import Head from "next/head";
-
+"use client"; // ✅ Keep this for client-side behavior
 
 import "./globals.css";
 import { Poppins, Josefin_Sans } from "next/font/google";
@@ -9,12 +7,10 @@ import { ThemeProvider } from "@/utils/theme-provider";
 import { Toaster } from "react-hot-toast";
 import AppProvider from "./Provider";
 import { SessionProvider } from "next-auth/react";
-
-
 import Header from "./_components/Header";
+import RouterWrapper from "./RouterWrapper";
 
-import RouterWrapper from "./RouterWrapper"; // New component
-
+// ✅ Import fonts correctly
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -26,66 +22,53 @@ const josefinSans = Josefin_Sans({
   subsets: ["latin"],
   variable: "--font-josefin-sans",
 });
-export const metadata = {  
-  title: "LMS | Create Courses, Collaborate & Manage Learning",  
-  description: "LMS is a powerful platform for creating courses and lessons where users can share resources, participate in discussions, manage assignments and quizzes, and collaborate on learning content.",  
-  keywords: [
-    "LMS",
-
-    "Artical",
-    "Documenation",
-    "LMS Karan",
-    "Learning Management System",
-    "Course Creation",
-    "Lesson Management",
-    "Discussion Forums",
-    "Assignments Management",
-    "Quizzes",
-    "Collaboration Tools",
-    "Educational Content",
-    "Online Learning",
-    "E-Learning",
-    "Student Engagement",
-    "Instructor Tools",
-    "MERN Stack",
-    "Next.js",
-    "JavaScript",
-    "Tech Education",
-  ],  
-  openGraph: {
-    title: "LMS | Create Courses, Collaborate & Manage Learning",
-    description: "An advanced LMS platform for course creation, discussions, assignments, collaboration, and interactive learning.",
-    url: "https://learning-bac.vercel.app/",  // Update with the actual project URL
-    type: "website",
-    images: [
-      {
-        url: "https://photos.fife.usercontent.google.com/pw/AP1GczP3DE3kpLXWFTYZfHzGYDysfdnCrjctV91nNg-PQ_ftJl74EJhsV_lI=w958-h539-s-no-gm?authuser=0", // Replace with your actual image URL
-        width: 1200,
-        height: 630,
-        alt: "LMS Platform - Courses, Collaboration & Learning",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "LMS | Create Courses, Collaborate & Manage Learning",
-    description: "A Next.js-powered LMS platform for course creation, discussions, assignments, and collaboration in online learning.",
-    images: ["https://photos.fife.usercontent.google.com/pw/AP1GczP3DE3kpLXWFTYZfHzGYDysfdnCrjctV91nNg-PQ_ftJl74EJhsV_lI=w958-h539-s-no-gm?authuser=0"], // Ensure it's a valid absolute URL
-  },
-};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
- 
-
   return (
     <html lang="en">
-   <Head>
-  <meta name="google-site-verification" content="EMRmOscRW_F2FevSrX3DYYlXCsXA5A80jolVHKYJG8Y" />
-</Head>
+      <head>
+        {/* ✅ Canonical URL */}
+        <link rel="canonical" href="https://learning-bac.vercel.app/" />
+
+        {/* ✅ Google Site Verification */}
+        <meta name="google-site-verification" content="your-google-verification-code" />
+
+        {/* ✅ Favicon for Branding */}
+        <link rel="icon" href="/karankumar.jpg" sizes="any" />
+        <link rel="apple-touch-icon" href="/karankumar.jpg" />
+
+        {/* ✅ Open Graph Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Karan Kumar LMS | Learning Management System" />
+        <meta property="og:description" content="Experienced MERN Stack Developer skilled in React, Next.js, and AI solutions." />
+        <meta property="og:url" content="https://learning-bac.vercel.app/" />
+        <meta property="og:image" content="https://learning-bac.vercel.app/karankumar.jpg" />
+
+        {/* ✅ Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Karan Kumar LMS | Learning Management System" />
+        <meta name="twitter:description" content="Experienced MERN Stack Developer skilled in React, Next.js, and AI solutions." />
+        <meta name="twitter:image" content="https://learning-bac.vercel.app/karankumar.jpg" />
+
+        {/* ✅ JSON-LD Schema Markup for SEO */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Karan Kumar",
+          "url": "https://learning-bac.vercel.app/",
+          "image": "https://learning-bac.vercel.app/karankumar.jpg",
+          "jobTitle": "Full-Stack Developer",
+          "sameAs": [
+            "https://www.linkedin.com/in/karan-kumar-823190256/",
+            "https://github.com/karankumar12345",
+            "https://leetcode.com/Karan1_2"
+          ]
+        })}} />
+      </head>
 
       <body
         className={`${poppins.variable} ${josefinSans.variable} !bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}
@@ -94,8 +77,7 @@ export default function RootLayout({
           <AppProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <Header activeItem={0} setActiveItem={function (item: number): void {
-                throw new Error("Function not implemented.");
-              } } />
+                throw new Error("Function not implemented.");}} />
               <RouterWrapper>{children}</RouterWrapper>
               <Toaster position="top-center" />
             </ThemeProvider>

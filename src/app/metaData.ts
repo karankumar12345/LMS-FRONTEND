@@ -1,0 +1,47 @@
+export const metadata = {  
+    title: "LMS | Create Courses, Collaborate & Manage Learning",  
+    description: "LMS is a powerful platform for creating courses and lessons where users can share resources, participate in discussions, manage assignments and quizzes, and collaborate on learning content.",  
+    keywords: [
+      "LMS",
+      "Article",
+      "Documentation",
+      "LMS Karan",
+      "Learning Management System",
+      "Course Creation",
+      "Lesson Management",
+      "Discussion Forums",
+      "Assignments Management",
+      "Quizzes",
+      "Collaboration Tools",
+      "Educational Content",
+      "Online Learning",
+      "E-Learning",
+      "Student Engagement",
+      "Instructor Tools",
+      "MERN Stack",
+      "Next.js",
+      "JavaScript",
+      "Tech Education",
+    ],  
+    openGraph: {
+      title: "LMS | Create Courses, Collaborate & Manage Learning",
+      description: "An advanced LMS platform for course creation, discussions, assignments, collaboration, and interactive learning.",
+      url: "https://learning-bac.vercel.app/",
+      type: "website",
+      images: [
+        {
+          url: "https://learning-bac.vercel.app/karankumar.jpg",
+          width: 1200,
+          height: 630,
+          alt: "LMS Platform - Courses, Collaboration & Learning",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "LMS | Create Courses, Collaborate & Manage Learning",
+      description: "A Next.js-powered LMS platform for course creation, discussions, assignments, and collaboration in online learning.",
+      images: ["https://learning-bac.vercel.app/karankumar.jpg"],
+    },
+  };
+  
