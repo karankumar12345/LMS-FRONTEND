@@ -13,13 +13,14 @@ export default function Protected({ children }: ProtectedProps) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
       if (!isAuthenticated) {
         redirect("/Auth/login");
+      } else {
+        setLoading(false);
       }
     }, 5000); // 5-second delay
 
-    return () => clearTimeout(timer); // Cleanup the timer
+    return () => clearTimeout(timer); // Cleanup timer on unmount
   }, [isAuthenticated]);
 
   if (loading) {
