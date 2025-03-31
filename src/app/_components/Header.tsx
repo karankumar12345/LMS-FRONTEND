@@ -134,7 +134,7 @@ const Header = ({ activeItem, setActiveItem }: Props) => {
             ×
           </button>
           <nav className="flex flex-col space-y-4">
-            {["Home", "About", "Services", "Contactpage"].map((item, index) => (
+            {["Home", "About", "Services", "Contact"].map((item, index) => (
               <a
                 key={index}
                 href={`/${item.toLowerCase()}`}
