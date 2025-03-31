@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+import Head from "next/head";
+
 
 import "./globals.css";
 import { Poppins, Josefin_Sans } from "next/font/google";
@@ -81,9 +83,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-      <meta name="google-site-verification" content="EMRmOscRW_F2FevSrX3DYYlXCsXA5A80jolVHKYJG8Y" />
-      </head>
+   <Head>
+  <meta name="google-site-verification" content="EMRmOscRW_F2FevSrX3DYYlXCsXA5A80jolVHKYJG8Y" />
+</Head>
+
       <body
         className={`${poppins.variable} ${josefinSans.variable} !bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}
       >
